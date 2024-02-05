@@ -14,6 +14,11 @@ class Blog(models.Model):
         verbose_name='Блог пользователя',
         on_delete=models.CASCADE,
     )
+    followers = models.ManyToManyField(
+        User,
+        related_name='followed_blogs',
+        verbose_name='Подписчики блога',
+    )
 
 class Post(models.Model):
     """Пост в блоге."""
@@ -43,4 +48,20 @@ class Post(models.Model):
         related_name='posts',
     )
 
-
+class PostUserRelation(models.Model):
+    user = models.ForeignKey(
+        User,
+        related_name='read_posts',
+        verbose_name='Прочитанные посты',
+        on_delete=models.CASCADE,
+    )
+    post = models.ForeignKey(
+        Post,
+        related_name='read_users',
+        verbose_name='Прочтенный пост',
+        on_delete=models.CASCADE,   
+    )
+    is_read = models.BooleanField(
+        default=False,
+        verbose_name='Прочитан ли пост или нет',
+    )
