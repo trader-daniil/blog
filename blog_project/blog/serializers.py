@@ -10,3 +10,14 @@ class BlogSerializer(serializers.ModelSerializer):
             'id',
             'title',
         )
+
+class PostSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Post
+        fields = (
+            'id',
+            'title',
+            'text',
+            'created_at',
+        )
