@@ -6,3 +6,4 @@ from .serializers import BlogSerializer
 class BlogViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
+
