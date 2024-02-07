@@ -20,4 +20,10 @@ class PostSerializer(serializers.ModelSerializer):
             'title',
             'text',
             'created_at',
+            'author',
+            'blog',
+        )
+        read_only_fields = (
+            'blog',
+            'author',
         )
